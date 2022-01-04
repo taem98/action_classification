@@ -85,8 +85,6 @@ def move(box):
         return 1
 
 
-
-
 def direction(box):
 
     if int(box.attrib['pose_left']) == 1:
