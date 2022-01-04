@@ -197,7 +197,7 @@ def start(vid_path, vid_name):
 
 
 if __name__ == "__main__":
-    VID_PATH = '/media/taemi/Elements/JAAD/' # JAAD path
+    VID_PATH = '../../../JAAD/' # JAAD path
     # VID_NAME = 'video_0001'
     for num in range(346):
         VID_NAME = 'video_{0:04}'.format(num+1)
