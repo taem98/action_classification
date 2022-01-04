@@ -110,7 +110,11 @@ def phone(box):
     elif int(box.attrib['phone']) == 1:
         return 1
 
-
+def bicycle_motorcycle(box):
+    if int(box.attrib['bicycle_motorcycle']) == 0:
+        return 0
+    elif int(box.attrib['bicycle_motorcycle']) == 1:
+        return 1
 
 def make_obj_list(f_num, p_num, ano_track, appearances):
 
@@ -121,13 +125,14 @@ def make_obj_list(f_num, p_num, ano_track, appearances):
             for box in track:
                 if box.attrib['frame'] == str(f_num):
                     # add obj list
-                    obj_list = [p_num,   #[image_num, frame_num, person_ID, move, direction, looking, phone]
+                    obj_list = [p_num,   #[image_num, frame_num, person_ID, move, looking, phone, bicycle_motorcycle]
                                 f_num,
                                 p_id,
                                 move(ano_track),
-                                direction(box),
+                                # direction(box),
                                 look(ano_track) ,
                                 phone(box) ,
+                                bicycle_motorcycle(box)
                                 ]                    
 
     return obj_list
@@ -197,4 +202,4 @@ if __name__ == "__main__":
     for num in range(346):
         VID_NAME = 'video_{0:04}'.format(num+1)
         start(VID_PATH, VID_NAME)
-        # break
+        #break
