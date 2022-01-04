@@ -189,7 +189,7 @@ def start(vid_path, vid_name):
         pickle.dump(all_person, f, pickle.HIGHEST_PROTOCOL)
 
 
-00
+
 
 if __name__ == "__main__":
     VID_PATH = '/media/taemi/Elements/JAAD/' # JAAD path
