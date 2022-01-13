@@ -10,7 +10,7 @@ with open("./removed_test/*.txt", 'r') as f:
 
 # dir_path = "../images/"
 
-dir_path = "../images/**/*.jpg"
+dir_path = "../images/**/"
 
 for name in texts:
     if os.path.isfile(dir_path+name[:-1]):
