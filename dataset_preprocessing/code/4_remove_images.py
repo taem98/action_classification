@@ -1,5 +1,4 @@
 import os
-import glob
 from posixpath import split
 import re
 
@@ -35,6 +34,7 @@ for imgs in img_dir:
     txt_path = "../removed_test/removed_test_{}.txt".format(imgs)
     file = open(txt_path, 'r')
     read_file = file.readlines()
+    file.close()
     for img_name in read_file:
         impath = dir_path+txt_path[29:39]+"/"+img_name
         imlist = impath.split('\n')
