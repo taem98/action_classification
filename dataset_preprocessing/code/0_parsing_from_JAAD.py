@@ -78,7 +78,7 @@ def cut_img(img, f_num, box):
 
 
 def move(box):
-    action = box[0][4].text
+    action = box[4].text
     if action == 'standing':
         return 0
     elif action == 'walking':
@@ -98,7 +98,7 @@ def direction(box):
 
 
 def look(box):
-    looking = box[0][2].text
+    looking = box[2].text
     if looking == 'not-looking':
         return 0
     elif looking == 'looking':
@@ -118,12 +118,12 @@ def bicycle_motorcycle(box):
 
 def make_obj_list(f_num, p_num, ano_track, appearances):
 
-    p_id = ano_track[0][0].text # id of pedestrian
-
+    p_id = ano_track[0].text # id of pedestrian
     for track in appearances:
         if track.attrib['id'] == p_id:
             for box in track:
                 if box.attrib['frame'] == str(f_num):
+        
                     # add obj list
                     obj_list = [p_num,   #[image_num, frame_num, person_ID, move, looking, phone, bicycle_motorcycle]
                                 f_num,
@@ -151,8 +151,7 @@ def make_obj(img, f_num, p_num, vid_name, annotations, appearances, all_person):
 
                 cv2.imwrite('../images/{}/{:05}.jpg'.format(vid_name, p_num), c_img)
                 
-                obj_list = make_obj_list(f_num, p_num, track, appearances)
-                # print(obj_list)
+                obj_list = make_obj_list(f_num, p_num, box, appearances)
                 all_person.append(obj_list) #TODO
 
                 p_num += 1
@@ -194,12 +193,10 @@ def start(vid_path, vid_name):
         pickle.dump(all_person, f, pickle.HIGHEST_PROTOCOL)
 
 
-
-
 if __name__ == "__main__":
-    VID_PATH = '../../../JAAD/' # JAAD path
+    VID_PATH = '/media/taemi/Elements/JAAD/' # JAAD path
     # VID_NAME = 'video_0001'
     for num in range(346):
         VID_NAME = 'video_{0:04}'.format(num+1)
         start(VID_PATH, VID_NAME)
-        #break
+        # break
